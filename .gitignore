@@ -1,0 +1,12 @@
+# General
+.env
+
+# Frontend
+.cache
+node_modules
+
+# Backend
+__pycache__
+logs/
+venv
+.db
