@@ -2,9 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- About the site -->
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="{{ url_for('static', filename='robots.txt' ) }}">
+  <meta name="humans" content="{{ url_for('static', filename='humans.txt' ) }}">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='build/styles.css') }}">
+
+  <!-- Favicon -->
+  <link href="{{ url_for('static', filename='icons/apple-touch-icon-57x57.png') }}" rel="apple-touch-icon" sizes="57x57">
+  <link href="{{ url_for('static', filename='icons/apple-touch-icon-60x60.png') }}" rel="apple-touch-icon" sizes="60x60">
+  <link href="{{ url_for('static', filename='icons/apple-touch-icon-72x72.png') }}" rel="apple-touch-icon" sizes="72x72">
+  <link href="{{ url_for('static', filename='icons/apple-touch-icon-76x76.png') }}" rel="apple-touch-icon" sizes="76x76">
+  <link href="{{ url_for('static', filename='icons/apple-touch-icon-114x114.png') }}" rel="apple-touch-icon" sizes="114x114">
+  <link href="{{ url_for('static', filename='icons/apple-touch-icon-120x120.png') }}" rel="apple-touch-icon" sizes="120x120">
+  <link href="{{ url_for('static', filename='icons/apple-touch-icon-144x144.png') }}" rel="apple-touch-icon" sizes="144x144">
+  <link href="{{ url_for('static', filename='icons/apple-touch-icon-152x152.png') }}" rel="apple-touch-icon" sizes="152x152">
+  <link href="{{ url_for('static', filename='icons/apple-touch-icon-180x180.png') }}" rel="apple-touch-icon" sizes="180x180">
+  <link href="{{ url_for('static', filename='icons/favicon-16x16.png" rel="icon') }}" type="image/png" sizes="16x16">
+  <link href="{{ url_for('static', filename='icons/favicon-32x32.png" rel="icon') }}" type="image/png" sizes="32x32">
+  <link href="{{ url_for('static', filename='icons/favicon-48x48.png" rel="icon') }}" type="image/png" sizes="48x48">
+  <link href="{{ url_for('static', filename='icons/favicon-64x64.png" rel="icon') }}" type="image/png" sizes="64x64">
+  <link href="{{ url_for('static', filename='icons/favicon-96x96.png" rel="icon') }}" type="image/png" sizes="96x96">
+  <link href="{{ url_for('static', filename='icons/android-chrome-192x192.png') }}" rel="icon" type="image/png" sizes="192x192">
+
+  <!-- theme -->
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph Social Media Sharing -->
+  <meta property="og:title" content="{{ title }}">
+  <meta proptery="og:type" content="website">
+  <meta property="og:image" content="{{ url_for('static', filename='images/screenshot.png') }}">
+  <meta property="og:url" content="https://www.energysavers.com">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:site_name" content="Energy Savers">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="{{ description }}">
+  <meta name="twitter:site" content="@energysavers">
+  <meta name="twitter:url" content="{{ request.url }}">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ url_for('static', filename='images/screenshot.png') }}">
+
+  <!-- Script -->
+  <script src="{{ url_for('static', filename='build/scripts.js') }}" async></script>
+
 </head>
 <body>
+
   {% block content %}{% endblock %}
+
 </body>
 </html>

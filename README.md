@@ -25,9 +25,9 @@ The frontend is built using [Parcel](https://parceljs.org/).
 - **requirements.txt** - All of the Python packages that need to be installed
 - **frontend**
   * **styles** - Holds the `.scss` files
+    - entry is `main.scss`
   * **scripts** - Holds the `.js` files
-  * **styles.js** - Script that parcel uses to build the `.scss` files into `.css` files
-  * **scripts.js** - Script that parcel uses to transpile the `.js` files
+    - entry is `index.js`
 - **migrations** - SQLAlchemy (ORM) migrations, don't mess with this
 - **app**
   * **\_\_init\_\_.py** - Main flask entry into the app

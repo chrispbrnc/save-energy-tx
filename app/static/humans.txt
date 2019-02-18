@@ -1,0 +1,1 @@
+Energy Saver was built by Patrick Burris <pgb@pburris.me> using Python and Flask
