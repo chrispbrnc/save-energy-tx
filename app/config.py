@@ -26,3 +26,6 @@ class Config(object):
 
     ADMINS = ['pgb@pburris.me']
     LOG_TO_STDOUT = os.getenv('LOG_TO_STDOUT')
+
+    SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+    SENDGRID_DEFAULT_FROM = 'pgb@pburris.me'
