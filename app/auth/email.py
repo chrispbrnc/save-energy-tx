@@ -1,6 +1,7 @@
 from flask import render_template, current_app
 from app.email import send_email
 
+# Email Verification Email
 def send_verification_email(user):
     token = user.get_verify_email_token()
     send_email('[Energy Savers] Email Verification',
@@ -11,6 +12,7 @@ def send_verification_email(user):
         html_body=render_template('email/verification/verification.html',
             user=user, token=token))
 
+# Reset Password Email
 def send_password_reset_email(user):
     token = user.get_reset_password_token()
     send_email('[Energy Savers] Reset Your Password',

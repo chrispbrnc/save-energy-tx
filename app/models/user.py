@@ -64,6 +64,7 @@ class User(UserMixin, db.Model):
         return 'https://www.gravatar.com/avatar/{}?id=identicon&s={}'.format(digest, size)
 
 
+    # Generate the reset password token
     def get_reset_password_token(self, expires_in=600):
         data = {
             'reset_password': self.id,
@@ -71,6 +72,7 @@ class User(UserMixin, db.Model):
         }
         return jwt.encode(data, current_app.config['SECRET_KEY'], algorithm='HS256').decode('utf-8')
 
+    # Generate the verify email token
     def get_verify_email_token(self, expires_in=600):
         data = {
             'verify_email': self.id,
@@ -78,6 +80,7 @@ class User(UserMixin, db.Model):
         }
         return jwt.encode(data, current_app.config['SECRET_KEY'], algorithm='HS256').decode('utf-8')
 
+    # Returns a user from the id in the JWT
     @staticmethod
     def verify_reset_password(token):
         try:
@@ -86,6 +89,7 @@ class User(UserMixin, db.Model):
             return
         return User.query.get(id)
 
+    # Returns a user from the id in the JWT
     @staticmethod
     def verify_email(token):
         try:
