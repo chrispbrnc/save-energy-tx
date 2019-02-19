@@ -42,3 +42,13 @@ def register(app):
         """Run all tests"""
         tests = unittest.TestLoader().discover('app/tests', pattern='test_*.py')
         unittest.TextTestRunner(verbosity=2).run(tests)
+
+    @app.cli.group()
+    def icons():
+        """Build Browser icons"""
+
+    @icons.command()
+    def all():
+        """Build all icons"""
+        if os.system('python bin/icon.py'):
+            raise RuntimeError('icon build failed')
