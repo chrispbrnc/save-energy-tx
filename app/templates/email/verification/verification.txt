@@ -1,0 +1,11 @@
+Dear {{ user.username }},
+
+Thank you for signing up!
+
+Click the following link to activate your account.
+
+{{ url_for('auth.verify_email', token=token, _external=True) }}
+
+Sincerely,
+
+Energy Savers

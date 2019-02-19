@@ -4,10 +4,11 @@ User Routes
 These are the general routes for the user
 '''
 from datetime import datetime
-from flask import render_template
+from flask import render_template, request, flash, redirect, url_for
 from flask_login import current_user, login_required
 from app.models.user import User
 from app.user import bp
+from app.user.forms import EditProfileForm
 from app import db
 
 
@@ -23,17 +24,25 @@ def before_request():
 # User profile page
 @bp.route('/profile')
 @login_required
-def dashboard():
+def profile():
     return render_template('user/profile.html', title='Home', user=current_user)
 
 # User profile edit
 @bp.route('/profile/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
-    form = EditProfileForm(current_user)
+    form = EditProfileForm()
     if form.validate_on_submit():
         # Set values on current_user from form
-        pass
+        current_user.firstname = form.firstname.data
+        current_user.lastname = form.lastname.data
+        current_user.zip_code = form.zip_code.data
+        current_user.address = form.address.data
+        current_user.state = form.state.data
+        db.session.commit()
+        flash('Success! Your changes have been saved')
+        return redirect(url_for('user.profile'))
+
     elif request.method == 'GET':
         # Set the values on form from current_user
         form.firstname.data = current_user.firstname

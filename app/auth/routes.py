@@ -19,7 +19,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         # Check if the user exists and that the password is correct
-        if user in None or not user.check_password(form.password.data):
+        if user is None or not user.check_password(form.password.data):
             # If not, show error
             flash('Invalid email or password')
             return redirect(url_for('auth.login'))
@@ -46,6 +46,7 @@ def register():
 
     # If the form was submitted and is validated
     if form.validate_on_submit():
+        print('validated...')
         # Create user
         u = User()
         u.username = form.email.data
@@ -72,6 +73,28 @@ def register():
 
     return render_template('auth/register.html', title='Register', form=form)
 
+# Verify Email
+@bp.route('/verify-email/<token>', methods=['GET', 'POST'])
+def verify_email(token):
+    # If the user is logged in, skip the reset password page
+    if current_user.is_authenticated and current_user.verified:
+        return redirect(url_for('user.profile'))
+    u = User.verify_email(token)
+
+    print(token)
+
+    # If don't find the user, redirect home
+    if not u:
+        return redirect(url_for('main.index'))
+
+    # Verify the user
+    u.verified = True
+    db.session.commit()
+
+    flash('Success! Your account is now verified')
+    return redirect(url_for('user.profile'))
+
+
 # Reset Password Request
 @bp.route('/reset-password', methods=['GET', 'POST'])
 def reset_password_request():
@@ -93,7 +116,7 @@ def reset_password_request():
 
 # Reset Password with token
 @bp.route('/reset-password/<token>', methods=['GET', 'POST'])
-def reset_password():
+def reset_password(token):
     # If the user is logged in, skip the reset password page
     if current_user.is_authenticated:
         return redirect(url_for('main.index'))
@@ -111,4 +134,4 @@ def reset_password():
         flash('Success! Your password has been reset.')
         return redirect(url_for('auth.login'))
 
-    return render_template('auth/reset-password.html')
+    return render_template('auth/reset-password.html', form=form)
