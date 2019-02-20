@@ -4,8 +4,9 @@ User Routes
 These are the general routes for the user
 '''
 from datetime import datetime
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, request, flash, redirect, url_for, current_app
 from flask_login import current_user, login_required
+import stripe
 from app.models.user import User
 from app.user import bp
 from app.user.forms import EditProfileForm
@@ -25,7 +26,10 @@ def before_request():
 @bp.route('/profile')
 @login_required
 def profile():
-    return render_template('user/profile.html', title='Home', user=current_user)
+    return render_template('user/profile.html',
+            title='Home',
+            user=current_user,
+            key=current_app.config['STRIPE_PUBLISHABLE_KEY'])
 
 # User profile edit
 @bp.route('/profile/edit', methods=['GET', 'POST'])

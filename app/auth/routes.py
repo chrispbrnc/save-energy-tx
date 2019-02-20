@@ -1,5 +1,6 @@
 from flask import render_template, redirect, url_for, flash
 from flask_login import current_user, login_user, logout_user
+import stripe
 from app import db
 from app.auth import bp
 from app.auth.forms import LoginForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm
@@ -46,7 +47,6 @@ def register():
 
     # If the form was submitted and is validated
     if form.validate_on_submit():
-        print('validated...')
         # Create user
         u = User()
         u.username = form.email.data
@@ -59,6 +59,11 @@ def register():
         u.zip_code = form.zip_code.data
         u.set_password(form.password.data)
         u.verified = False
+
+        # Create stripe user
+        customer = stripe.Customer.create(email=u.email)
+        u.stripe_id = customer.id
+
 
         # Save user to DB
         db.session.add(u)
@@ -80,8 +85,6 @@ def verify_email(token):
     if current_user.is_authenticated and current_user.verified:
         return redirect(url_for('user.profile'))
     u = User.verify_email(token)
-
-    print(token)
 
     # If don't find the user, redirect home
     if not u:

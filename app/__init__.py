@@ -5,12 +5,16 @@ This file manages the creation of the Flask application
 '''
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
+
 import os
+
 from flask import Flask, request, current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_sendgrid import SendGrid
+import stripe
+
 from app.config import Config
 
 '''
@@ -42,6 +46,8 @@ in the Heroku dashboard
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+
+    stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
     db.init_app(app)
     migrate.init_app(app, db)
