@@ -2,6 +2,41 @@
 
 {% block content %}
 
-  <h1>FAQ</h1>
+  {% include "partials/faq/_hero.html" %}
+
+  <div class="main main-raised pt-5 pb-4">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <ul class="list-group pr-md-3">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
+
+        <div class="col-sm-12 col-md-8">
+
+          {% for num in range(10) %}
+            <div class="row">
+              <div class="container">
+                <div class="col-12">
+                  <h2>Cras justo odio</h2>
+                  <p class="description">Lorem ipsum dolor</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
 
 {% endblock %}

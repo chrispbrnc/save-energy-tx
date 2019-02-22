@@ -1,0 +1,45 @@
+<nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg navbar-transparent" color-on-scroll='50'>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <div class="logo-image">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="img-fluid">
+      </div>
+    </a>
+    <div class="nav-item mr-2 d-sm-none d-md-block">
+      <strong>Energy Savers of Texas</strong>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('main.index') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('main.faq') }}">FAQ</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="button-container nav-item iframe-extern">
+
+          {% if current_user %}
+            <a href="{{ url_for('auth.login') }}" style="color: white;" class=" btn btn-danger btn-round btn-small btn-block">
+              <i class="material-icons">person</i> Profile
+              <div class="ripple-container"></div>
+            </a>
+          {% else %}
+            <a href="{{ url_for('user.profile') }}" style="color: white;" class=" btn btn-danger btn-round btn-small btn-block">
+              <i class="material-icons">lock_open</i> Log in
+              <div class="ripple-container"></div>
+            </a>
+          {% endif %}
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

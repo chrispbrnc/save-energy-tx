@@ -2,6 +2,60 @@
 
 {% block content %}
 
-  <h1>Index</h1>
+  {% include "partials/home/_hero.html" %}
+
+  <div class="container">
+    <div class="row pt-5">
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Full header coloured</h4>
+          </div>
+          <div class="card-body">
+            The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Full header coloured</h4>
+          </div>
+          <div class="card-body">
+            The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Full header coloured</h4>
+          </div>
+          <div class="card-body">
+            The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container mt-5">
+    <div class="row p-5">
+      <div class="col-md-6 ml-auto mr-auto">
+        <div class="text-center">
+          <h3 class="title">Sign up today!</h3>
+          <p class="description">
+            Join our newsletter and get news in your inbox every week! We hate spam too, so no worries about this.
+          </p>
+        </div>
+        <button type="button" class="btn btn-danger btn-block">Subscribe</button>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
