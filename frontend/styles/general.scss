@@ -1,0 +1,22 @@
+
+.c-spacer {
+  margin-top: 250px;
+}
+
+.togglebutton label .toggle, .togglebutton label input[type=checkbox]+.toggle {
+  background-color: rgba(80, 80, 80, 0.7);
+
+  &:after {
+    border-color: rgba(80, 80, 80, 0.7);
+    box-shadow: 0px 1px 3px 1px rgba(80, 80, 80, 0.7);
+  }
+}
+
+.togglebutton label .toggle, .togglebutton label input[type=checkbox]:checked+.toggle {
+  background-color: #f44336;
+
+  &:after {
+    border-color: #f44336;
+    box-shadow: 0px 1px 3px 1px rgba(244, 67, 54, 0.5);
+  }
+}
