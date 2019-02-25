@@ -2,30 +2,35 @@
 
 {% block content %}
 
+  <span id="top"></span>
+  <a href="#top" class="c-return-to-top">
+    <button class="btn btn-danger btn-fab btn-round">
+      <i class="material-icons">arrow_upward</i>
+    </button>
+  </a>
   {% include "partials/faq/_hero.html" %}
 
   <div class="main main-raised pt-5 pb-4">
 
-    <div class="container">
+    <div class="container mb-5">
       <div class="row">
-        <div class="col-sm-12 col-md-4">
+        <div class="col-sm-12 col-md-4 mt-3" style="position:relative;">
           <ul class="list-group pr-md-3">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            {% for i in items %}
+            <li class="list-group-item"><a href="#item_{{ loop.index }}">{{ i.title }}</a></li>
+            {% endfor %}
           </ul>
         </div>
 
         <div class="col-sm-12 col-md-8">
 
-          {% for num in range(10) %}
-            <div class="row">
+          {% for i in items %}
+            <div class="row" style="position: relative;">
+              <span id="item_{{ loop.index }}" style="position:absolute;top:-80px;"></span>
               <div class="container">
                 <div class="col-12">
-                  <h2>Cras justo odio</h2>
-                  <p class="description">Lorem ipsum dolor</p>
+                  <h2>{{ i.title }}</h2>
+                  <p class="description">{{ i.description }}</p>
                 </div>
               </div>
             </div>
@@ -38,5 +43,17 @@
 
   </div>
 
+{% endblock %}
 
+{% block script %}
+<script>
+
+  $("a[href^='#']").on('click', function(e) {
+    e.preventDefault();
+    const hash = this.hash;
+    console.log(hash)
+    $('html, body').animate({ scrollTop: $(hash).offset().top }, 300, () => window.location.hash = hash);
+  });
+
+</script>
 {% endblock %}

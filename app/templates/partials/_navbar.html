@@ -1,11 +1,11 @@
 <nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg navbar-transparent" color-on-scroll='50'>
   <div class="container">
     <a class="navbar-brand" href="/">
-      <div class="logo-image">
+      <div class="c-nav__logo-image">
         <img src="{{ url_for('static', filename='images/logo.png') }}" class="img-fluid">
       </div>
     </a>
-    <div class="nav-item mr-2 d-sm-none d-md-block">
+    <div class="nav-item mr-2 d-none d-md-block">
       <strong>Energy Savers of Texas</strong>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="button-container nav-item iframe-extern">
 
-          {% if current_user %}
+          {% if current_user.id %}
             <a href="{{ url_for('auth.login') }}" style="color: white;" class=" btn btn-danger btn-round btn-small btn-block">
               <i class="material-icons">person</i> Profile
               <div class="ripple-container"></div>

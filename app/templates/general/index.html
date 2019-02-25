@@ -5,37 +5,37 @@
   {% include "partials/home/_hero.html" %}
 
   <div class="container">
-    <div class="row pt-5">
+    <div class="row pt-5 c-index__info">
 
-      <div class="col-md-4">
+      <div class="col-md-4 align-self-start">
         <div class="card">
           <div class="card-header card-header-danger">
-            <h4 class="card-title">Full header coloured</h4>
+            <h4 class="card-title mt-0">Step 1: Register</h4>
           </div>
-          <div class="card-body">
-            The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
+          <div class="card-body p-4">
+            Register your account and we will contact you to review your current bill and answer any questions you might have.
           </div>
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 align-self-center">
         <div class="card">
           <div class="card-header card-header-danger">
-            <h4 class="card-title">Full header coloured</h4>
+            <h4 class="card-title mt-0">Step 2: Analyze</h4>
           </div>
-          <div class="card-body">
-            The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
+          <div class="card-body p-4">
+            With your permission we will analyze your usage information and find the best plan for you.
           </div>
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 align-self-end">
         <div class="card">
           <div class="card-header card-header-danger">
-            <h4 class="card-title">Full header coloured</h4>
+            <h4 class="card-title mt-0">Step 3: Save</h4>
           </div>
-          <div class="card-body">
-            The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
+          <div class="card-body p-4">
+            Sit back and save! After our team finds a plan best fit for you we will show you how much you will save and with your permission we will get you switched.
           </div>
         </div>
       </div>
@@ -45,15 +45,21 @@
   </div>
 
   <div class="container mt-5">
-    <div class="row p-5">
-      <div class="col-md-6 ml-auto mr-auto">
+    <div class="row p-3 p-md-4 l-lg-5 bg-white rounded">
+      <div class="col-sm-12 col-md-8 col-lg-6 ml-auto mr-auto">
         <div class="text-center">
-          <h3 class="title">Sign up today!</h3>
+          <h3 class="title">Want more information?</h3>
           <p class="description">
-            Join our newsletter and get news in your inbox every week! We hate spam too, so no worries about this.
+            Enter your email below or <a class="text-danger" href="{{ url_for('main.contact') }}">contact us</a>.
           </p>
         </div>
-        <button type="button" class="btn btn-danger btn-block">Subscribe</button>
+        <form class="col-sm-12 col-md-8 col-lg-6 mx-auto" method="post" action="" novalidate>
+          {{ form.hidden_tag() }}
+          <div class="form-group has-danger">
+            {{ form.email(class_="form-control", size=32)}}
+          </div>
+          {{ form.submit(class_="btn btn-danger btn-block")}}
+        </form>
       </div>
     </div>
   </div>
