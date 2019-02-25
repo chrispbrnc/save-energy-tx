@@ -44,7 +44,7 @@ def edit():
         current_user.address = form.address.data
         current_user.state = form.state.data
         db.session.commit()
-        flash('Success! Your changes have been saved')
+        flash('Success! Your changes have been saved', 'success')
         return redirect(url_for('user.profile'))
 
     elif request.method == 'GET':

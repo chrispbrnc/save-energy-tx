@@ -18,22 +18,14 @@
               <div class="form-row">
                 <div class="form-group col-12">
                   {{ form.email.label() }}
-                  {% if form.email.errors|length %}
-                    {{ form.email(size=32, class_="form-control") }}
-                  {% else %}
-                    {{ form.email(size=32, class_="form-control") }}
-                  {% endif %}
+                  {{ form.email(size=32, class_="form-control") }}
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group col-12">
                   {{ form.password.label }}
-                  {% if form.password.errors|length %}
-                    {{ form.password(size=32, class_="form-control") }}
-                  {% else %}
-                    {{ form.password(size=32, class_="form-control") }}
-                  {% endif %}
+                  {{ form.password(size=32, class_="form-control") }}
                   {% for error in form.password.errors %}
                     <span style="color: red;">{{ error }}</span>
                   {% endfor %}

@@ -17,7 +17,7 @@ def index():
 
     if form.validate_on_submit():
         send_moreinfo_email(form.email.data)
-        flash('Success! Check your inbox for more information.')
+        flash('Success! Check your inbox for more information.', 'success')
         return redirect(url_for('main.index'))
 
     return render_template('general/index.html', title='Home', form=form)

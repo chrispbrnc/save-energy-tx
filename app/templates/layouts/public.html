@@ -61,12 +61,12 @@
 
   {% include "partials/_navbar.html" %}
 
-  {% with messages = get_flashed_messages() %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       <div class="c-alert__holder">
         <div class="container">
-          {% for message in messages %}
-          <div class="alert alert-success rounded">
+          {% for category, message in messages %}
+          <div class="alert alert-{{ category }} rounded">
             <div class="container">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true"><i class="material-icons">clear</i></span>

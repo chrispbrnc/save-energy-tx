@@ -22,7 +22,7 @@ def login():
         # Check if the user exists and that the password is correct
         if user is None or not user.check_password(form.password.data):
             # If not, show error
-            flash('Invalid email or password')
+            flash('Invalid email or password', 'warning')
             return redirect(url_for('auth.login'))
         # Otherwise log the user in
         login_user(user, remember=form.remember_me.data)
@@ -73,7 +73,7 @@ def register():
         send_verification_email(u)
 
         # Send user a success message
-        flash('Success! Check your email for a verification link')
+        flash('Success! Check your email for a verification link', 'success')
         return redirect(url_for('auth.login'))
 
     return render_template('auth/register.html', title='Register', form=form)
@@ -94,7 +94,7 @@ def verify_email(token):
     u.verified = True
     db.session.commit()
 
-    flash('Success! Your account is now verified')
+    flash('Success! Your account is now verified', 'success')
     return redirect(url_for('user.profile'))
 
 
@@ -112,7 +112,7 @@ def reset_password_request():
         # If we find the user, send them the password reset email
         if u:
             send_password_reset_email(u)
-        flash('Success! Check your email for instructions on the next steps for resetting your password')
+        flash('Success! Check your email for instructions on the next steps for resetting your password', 'success')
         return redirect(url_for('auth.login'))
 
     return render_template('auth/reset-password-request.html', title='Reset Password', form=form)
@@ -134,7 +134,7 @@ def reset_password(token):
     if form.validate_on_submit():
         u.set_password(form.password.data)
         db.session.commit()
-        flash('Success! Your password has been reset.')
+        flash('Success! Your password has been reset.', 'success')
         return redirect(url_for('auth.login'))
 
     return render_template('auth/reset-password.html', form=form)
