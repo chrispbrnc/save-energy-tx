@@ -9,4 +9,5 @@ class EditProfileForm(FlaskForm):
     address = StringField('Address', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
     zip_code = StringField('Zip Code', validators=[DataRequired()])
+    phone_number = StringField('Phone Number', validators=[DataRequired()])
     submit = SubmitField('Submit')

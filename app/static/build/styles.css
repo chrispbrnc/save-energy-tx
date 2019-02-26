@@ -1,3 +1,55 @@
-.c-spacer{margin-top:250px}.togglebutton label .toggle,.togglebutton label input[type=checkbox]+.toggle{background-color:rgba(80,80,80,0.7)}.togglebutton label .toggle:after,.togglebutton label input[type=checkbox]+.toggle:after{border-color:rgba(80,80,80,0.7);box-shadow:0px 1px 3px 1px rgba(80,80,80,0.7)}.togglebutton label .toggle,.togglebutton label input[type=checkbox]:checked+.toggle{background-color:#f44336}.togglebutton label .toggle:after,.togglebutton label input[type=checkbox]:checked+.toggle:after{border-color:#f44336;box-shadow:0px 1px 3px 1px rgba(244,67,54,0.5)}.c-nav__logo-image{width:46px;height:46px;border-radius:50%;overflow:hidden;margin-top:-6px}.c-index__info{min-height:500px}@media only screen and (max-width: 440px){.c-index__title{font-size:39px}}.c-return-to-top{content:"";position:fixed;bottom:10%;right:10%;z-index:10000}.c-alert__holder{position:fixed;top:88px;left:0;width:100%;z-index:10000}
+.c-spacer {
+  margin-top: 250px; }
 
-/*# sourceMappingURL=styles.css.map */
+.togglebutton label .toggle, .togglebutton label input[type=checkbox] + .toggle {
+  background-color: rgba(80, 80, 80, 0.7); }
+  .togglebutton label .toggle:after, .togglebutton label input[type=checkbox] + .toggle:after {
+    border-color: rgba(80, 80, 80, 0.7);
+    box-shadow: 0px 1px 3px 1px rgba(80, 80, 80, 0.7); }
+
+.togglebutton label .toggle, .togglebutton label input[type=checkbox]:checked + .toggle {
+  background-color: #f44336; }
+  .togglebutton label .toggle:after, .togglebutton label input[type=checkbox]:checked + .toggle:after {
+    border-color: #f44336;
+    box-shadow: 0px 1px 3px 1px rgba(244, 67, 54, 0.5); }
+
+.c-register__bg ~ footer a {
+  color: white; }
+
+.c-nav__logo-image {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: -6px; }
+
+/** Home Page **/
+.c-index__info {
+  min-height: 500px; }
+
+@media only screen and (max-width: 440px) {
+  .c-index__title {
+    font-size: 39px; } }
+
+/** FAQ **/
+.c-return-to-top {
+  content: "";
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  z-index: 10000; }
+
+/** Register **/
+.c-register__bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%); }
+
+.c-alert__holder {
+  position: fixed;
+  top: 88px;
+  left: 0;
+  width: 100%;
+  z-index: 10000; }

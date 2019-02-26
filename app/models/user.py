@@ -1,4 +1,5 @@
 import jwt
+import sqlalchemy as sa
 from datetime import datetime
 from hashlib import md5
 from time import time
@@ -47,6 +48,7 @@ class User(UserMixin, db.Model):
     city = db.Column(db.String(64))
     state = db.Column(db.String(64))
     zip_code = db.Column(db.Integer)
+    phone_number = db.Column(db.String(16))
 
     password_hash = db.Column(db.String(128))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
@@ -58,6 +60,14 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def set_phone_number(self, number):
+        num = PhoneNumber(number, 'US')
+        self.phone_number = num
+        db.session.commit()
+
+    def get_phone_number(self):
+        return self.phone_number.national
 
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()

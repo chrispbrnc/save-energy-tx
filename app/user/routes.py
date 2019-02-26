@@ -43,6 +43,7 @@ def edit():
         current_user.zip_code = form.zip_code.data
         current_user.address = form.address.data
         current_user.state = form.state.data
+        current_user.set_phone_number(form.phone_number.data)
         db.session.commit()
         flash('Success! Your changes have been saved', 'success')
         return redirect(url_for('user.profile'))
@@ -54,5 +55,6 @@ def edit():
         form.zip_code.data = current_user.zip_code
         form.address.data = current_user.address
         form.state.data = current_user.state
+        form.phone_number.data = current_user.get_phone_number()
 
     return render_template('user/edit.html', form=form)

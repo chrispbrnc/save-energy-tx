@@ -1,72 +1,128 @@
 {% extends "layouts/public.html" %}
 
 {% block content %}
-  <h1>Register</h1>
-  <form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-      {{ form.email.label }}<br>
-      {{ form.email(size=64) }}<br>
-      {% for error in form.email.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.password.label }}<br>
-      {{ form.password(size=32) }}<br>
-      {% for error in form.password.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.password2.label }}<br>
-      {{ form.password2(size=32) }}<br>
-      {% for error in form.password2.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.firstname.label }}<br>
-      {{ form.firstname(size=32) }}<br>
-      {% for error in form.firstname.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.lastname.label }}<br>
-      {{ form.lastname(size=32) }}<br>
-      {% for error in form.lastname.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.address.label }}<br>
-      {{ form.address(size=32) }}<br>
-      {% for error in form.address.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.state.label }}<br>
-      {{ form.state(size=32) }}<br>
-      {% for error in form.state.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.city.label }}<br>
-      {{ form.city(size=32) }}<br>
-      {% for error in form.city.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>
-      {{ form.zip_code.label }}<br>
-      {{ form.zip_code(size=32) }}<br>
-      {% for error in form.zip_code.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>{{ form.submit() }}</p>
-  </form>
+
+  <div class="c-register__bg header-filter"></div>
+  <div class="container" style="padding-top:50px;">
+    <div class="row">
+      <div class="col-12 col-md-10 col-lg-8 mx-auto pt-5">
+        <div class="card mt-5">
+
+          <form action="" method="post">
+            {{ form.hidden_tag() }}
+
+            <div class="card-header card-header-danger">
+              <h4 class="title m-0 p-0">Sign up for a new account</h4>
+            </div>
+
+            <div class="card-body">
+
+              <div class="form-row">
+                {% if form.email.errors|length %}
+                  <div class="form-group col-12 label-floating has-danger">
+                    {{ form.email.label(class_="control-label bmd-label-floating") }}
+                    {{ form.email(size=64, class_="form-control") }}
+                    <span class="material-icons form-control-feedback">clear</span>
+                    {% for error in form.email.errors %}
+                    <span class="text-danger">[{{ error }}]</span>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  <div class="form-group col-12">
+                    {{ form.email.label(class_="bmd-label-floating") }}
+                    {{ form.email(size=64, class_="form-control") }}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12 col-md-6">
+                  {{ form.password.label(class_="bmd-label-floating") }}
+                  {{ form.password(size=32, class_="form-control") }}
+                  {% for error in form.password.errors %}
+                  <span class="text-danger">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+
+                <div class="form-group col-12 col-md-6">
+                  {{ form.password2.label(class_="bmd-label-floating") }}
+                  {{ form.password2(size=32, class_="form-control") }}
+                  {% for error in form.password2.errors %}
+                  <span class="text-danger">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12 col-md-6">
+                  {{ form.firstname.label(class_="bmd-label-floating") }}
+                  {{ form.firstname(size=32, class_="form-control") }}
+                  {% for error in form.firstname.errors %}
+                  <span class="text-danger">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+                <div class="form-group col-12 col-md-6">
+                  {{ form.lastname.label(class_="bmd-label-floating") }}
+                  {{ form.lastname(size=32, class_="form-control") }}
+                  {% for error in form.lastname.errors %}
+                  <span class="text-danger">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12">
+                  {{ form.address.label(class_="bmd-label-floating") }}
+                  {{ form.address(size=32, class_="form-control") }}
+                  {% for error in form.address.errors %}
+                  <span class="text-danger">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12 col-md-6">
+                  {{ form.phone_number.label(class_="bmd-label-floating") }}
+                  {{ form.phone_number(size=32, class_="form-control") }}
+                  {% for error in form.phone_number.errors %}
+                  <span class="text-danger">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+                <div class="form-group col-12 col-md-6">
+                  {{ form.city.label(class_="bmd-label-floating") }}
+                  {{ form.city(size=32, class_="form-control") }}
+                  {% for error in form.city.errors %}
+                  <span class="text-danger">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+                <div class="form-group col-6">
+                  {{ form.state.label(class_="bmd-label-floating") }}
+                  {{ form.state(size=32, class_="form-control") }}
+                  {% for error in form.state.errors %}
+                  <span class="text-danger">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+                <div class="form-group col-6 ">
+                  {{ form.zip_code.label(class_="bmd-label-floating") }}
+                  {{ form.zip_code(size=32, class_="form-control") }}
+                  {% for error in form.zip_code.errors %}
+                  <span class="text-danger">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="form-row mt-4">
+                <div class="form-group col-12">
+                  {{ form.submit(class_="btn btn-danger") }}
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 {% endblock %}

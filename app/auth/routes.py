@@ -59,6 +59,7 @@ def register():
         u.zip_code = form.zip_code.data
         u.set_password(form.password.data)
         u.verified = False
+        u.set_phone_number(form.data.phone_number)
 
         # Create stripe user
         customer = stripe.Customer.create(email=u.email)
