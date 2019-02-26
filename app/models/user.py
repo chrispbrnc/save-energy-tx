@@ -61,14 +61,6 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    def set_phone_number(self, number):
-        num = PhoneNumber(number, 'US')
-        self.phone_number = num
-        db.session.commit()
-
-    def get_phone_number(self):
-        return self.phone_number.national
-
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?id=identicon&s={}'.format(digest, size)
