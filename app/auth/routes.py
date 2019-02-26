@@ -138,4 +138,4 @@ def reset_password(token):
         flash('Success! Your password has been reset.', 'success')
         return redirect(url_for('auth.login'))
 
-    return render_template('auth/reset-password.html', form=form)
+    return redirect(url_for('main.index'))
