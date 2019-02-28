@@ -1,16 +1,69 @@
 {% extends "layouts/dashboard.html" %}
 
 {% block content %}
-<table>
-  <tr valign="top">
-    <td><img src="{{ user.avatar(128) }}"></td>
-    <td>
-      <h1>{{ user.username }}</h1>
-      <h3>{{ user.firstname }} {{ user.lastname }}</h3>
-      {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
-      <p><a href="{{ url_for('user.edit') }}">Edit your profile</a></p>
-    </td>
-  </tr>
-</table>
+<div class="row p-3 my-3">
+
+  <div class="col-12 col-md-6 p-2">
+    <div class="card rounded">
+      <div class="card-body">
+        <div class="row">
+          <img class="rounded" src="{{ user.avatar(128) }}">
+          <div class="col-8">
+            <h2 class="m-0">{{ user.firstname }} {{ user.lastname }}</h2>
+            {% if user.last_seen %}<p>Last logged in: {{ user.last_seen.strftime('%Y-%m-%d') }}</p>{% endif %}
+            <p><a href="{{ url_for('user.edit') }}">Edit your profile</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 p-2">
+    <div class="card rounded">
+      <div class="card-header card-header-info">
+        <h4 class="title m-0 p-0">Information</h4>
+      </div>
+      <div class="card-body">
+        <div class="col-12 card-body">
+          <table class="table">
+            <thead>
+              <th scope="col">#</th>
+              <th scope="col">#</th>
+              <th scope="col">#</th>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Item</td>
+                <td>Item</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>Item</td>
+                <td>Item</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>{{user.zip_code}} - {{user.state}} - {{ user.address }} - {{ user.phone_number }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row p-3 my-3">
+  <div class="col-12">
+    <div class="card rounded">
+      <div class="card-header card-header-info">
+        <h4 class="title m-0 p-0">Edit Account</h4>
+      </div>
+      <div class="card-body">
+        {% include "partials/profile/_edit_form.html" %}
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

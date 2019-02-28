@@ -23,6 +23,10 @@
   justify-content: center;
   align-items: center; }
 
+.c-profile__photo {
+  width: 40px;
+  height: 40px; }
+
 .c-nav__logo-image {
   width: 46px;
   height: 46px;

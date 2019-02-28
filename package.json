@@ -4,14 +4,10 @@
   "description": "Energy saver website",
   "main": "index.js",
   "scripts": {
-    "build:css":
-      "node-sass frontend/styles/index.scss app/static/build/styles.css --importer node_modules/node-sass-import --output-style compressed --source-map true",
-    "watch:css":
-      "node-sass frontend/styles/index.scss app/static/build/styles.css --watch --importer node_modules/node-sass-import --no-stop-on-error",
-    "build:js":
-      "parcel build frontend/scripts/index.js --out-dir app/static/build",
-    "watch:js":
-      "parcel watch frontend/scripts/index.js --out-dir app/static/build",
+    "build:css": "node-sass frontend/styles/index.scss app/static/build/styles.css --importer node_modules/node-sass-import --output-style compressed --source-map true",
+    "watch:css": "node-sass frontend/styles/index.scss app/static/build/styles.css --watch --importer node_modules/node-sass-import --no-stop-on-error",
+    "build:js": "parcel build frontend/scripts/index.js --out-dir app/static/build",
+    "watch:js": "parcel watch frontend/scripts/index.js --out-dir app/static/build",
     "build": "npm run build:css & npm run build:js",
     "watch": "npm run watch:js & npm run watch:css",
     "clean": "rimraf app/static/build"

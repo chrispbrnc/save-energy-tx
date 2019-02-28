@@ -26,10 +26,20 @@ def before_request():
 @bp.route('/profile')
 @login_required
 def profile():
+    form = EditProfileForm()
     return render_template('user/profile.html',
-            title='Home',
+            title='Dashboard',
             user=current_user,
-            key=current_app.config['STRIPE_PUBLISHABLE_KEY'])
+            key=current_app.config['STRIPE_PUBLISHABLE_KEY'], form=form)
+
+# Contact Us for users
+@bp.route('/profile/contact')
+@login_required
+def contact_us():
+    return render_template('user/contact.html',
+            title='Contact Us',
+            user=current_user)
+
 
 # User profile edit
 @bp.route('/profile/edit', methods=['GET', 'POST'])
