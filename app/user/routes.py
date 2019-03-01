@@ -34,12 +34,8 @@ def profile():
     form.state.data = current_user.state
     form.phone_number.data = current_user.phone_number
 
-    charges = [
-        { 'price': 10, 'month': 'November 2018' },
-        { 'price': 10, 'month': 'December 2018' },
-        { 'price': 10, 'month': 'January 2019' },
-        { 'price': 10, 'month': 'February 2019' },
-    ]
+    data = (stripe.Charge.list(customer=current_user.stripe_id)).data
+    charges = list(map(lambda c: { 'price': c['amount'], 'month': c['created'] }, data))
 
     return render_template('user/profile.html',
             title='Dashboard',
