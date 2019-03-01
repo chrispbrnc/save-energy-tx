@@ -58,6 +58,9 @@ def create_app(config_class=Config):
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
 
+    from app.payments import bp as payments_bp
+    app.register_blueprint(payments_bp, url_prefix="/payments")
+
     from app.user import bp as user_bp
     app.register_blueprint(user_bp)
 

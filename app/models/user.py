@@ -26,11 +26,15 @@ User model
     city
     state
     zip_code
+    phone_number
 
     password_hash
     last_seen
 
     verified
+
+    active_sub
+    subscription
 
     stripe_id
 '''
@@ -52,6 +56,9 @@ class User(UserMixin, db.Model):
 
     password_hash = db.Column(db.String(128))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+
+    active_sub = db.Column(db.Boolean)
+    subscription = db.Column(db.String(256))
 
     stripe_id = db.Column(db.String(64))
 

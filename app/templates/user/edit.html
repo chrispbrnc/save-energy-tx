@@ -1,6 +1,12 @@
 {% extends "layouts/dashboard.html" %}
 
 {% block content %}
-  <h1>Edit Profile</h1>
-  {% include "partials/profile/_edit_form.html" %}
+  <div class="card mt-5">
+    <div class="card-header card-header-info">
+      <h3 class="title m-0">Edit Profile</h3>
+    </div>
+    <div class="card-body">
+      {% include "partials/profile/_edit_form.html" %}
+    </div>
+  </div>
 {% endblock %}

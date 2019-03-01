@@ -27,10 +27,25 @@ def before_request():
 @login_required
 def profile():
     form = EditProfileForm()
+    form.firstname.data = current_user.firstname
+    form.lastname.data = current_user.lastname
+    form.zip_code.data = current_user.zip_code
+    form.address.data = current_user.address
+    form.state.data = current_user.state
+    form.phone_number.data = current_user.phone_number
+
+    charges = [
+        { 'price': 10, 'month': 'November 2018' },
+        { 'price': 10, 'month': 'December 2018' },
+        { 'price': 10, 'month': 'January 2019' },
+        { 'price': 10, 'month': 'February 2019' },
+    ]
+
     return render_template('user/profile.html',
             title='Dashboard',
             user=current_user,
-            key=current_app.config['STRIPE_PUBLISHABLE_KEY'], form=form)
+            key=current_app.config['STRIPE_PUBLISHABLE_KEY'],
+            form=form, charges=charges)
 
 # Contact Us for users
 @bp.route('/profile/contact')

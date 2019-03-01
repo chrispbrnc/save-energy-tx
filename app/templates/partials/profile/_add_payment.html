@@ -1,0 +1,11 @@
+<form action="{{ url_for('payments.add') }}" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="{{ key }}"
+    data-email="{{ current_user.email }}"
+    data-name="Save Energy"
+    data-description="Set your prefered method of payment"
+    data-amount="0"
+    data-label="Add Payment Information">
+  </script>
+</form>

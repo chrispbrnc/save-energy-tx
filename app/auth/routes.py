@@ -60,6 +60,8 @@ def register():
         u.phone_number = form.phone_number.data
         u.set_password(form.password.data)
         u.verified = False
+        u.active_sub = False
+        u.subscription = ""
 
         # Create stripe user
         customer = stripe.Customer.create(email=u.email)

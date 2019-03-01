@@ -1,0 +1,29 @@
+<footer class="footer footer-black mt-5">
+  <div class="container">
+    <ul class="pull-center">
+      <li>
+        <a href="{{ url_for('user.profile') }}">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('main.faq') }}">
+          FAQ
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('auth.logout') }}">
+          Log out
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('user.contact_us') }}">
+          Contact Us
+        </a>
+      </li>
+    </ul>
+    <div class="copyright">
+      ©<script>document.write(new Date().getFullYear())</script> Save Energy Texas
+    </div>
+  </div>
+</footer>

@@ -1,49 +1,116 @@
   <form action="{{ url_for('user.edit') }}" method="post">
     {{ form.hidden_tag() }}
-    <!-- First Name -->
-    <p>
-      {{ form.firstname.label }}<br>
-      {{ form.firstname(size=32) }}<br>
-      {% for error in form.firstname.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
+    <div class="form-row">
 
-    <!-- Last Name -->
-    <p>
-      {{ form.lastname.label }}<br>
-      {{ form.lastname(size=32) }}<br>
-      {% for error in form.lastname.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
+      <!-- First Name -->
+      {% if form.firstname.errors|length %}
+        <div class="form-group col-12 col-sm-6 label-floating has-danger">
+          {{ form.firstname.label(class_="control-label bmd-label-floating") }}
+          {{ form.firstname(size=64, class_="form-control") }}
+          <span class="material-icons form-control-feedback">clear</span>
+          {% for error in form.firstname.errors %}
+          <span class="text-danger">[{{ error }}]</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="form-group col-12 col-sm-6">
+          {{ form.firstname.label(class_="bmd-label-floating") }}
+          {{ form.firstname(size=64, class_="form-control") }}
+        </div>
+      {% endif %}
 
-    <!-- Zip Code -->
-    <p>
-      {{ form.zip_code.label }}<br>
-      {{ form.zip_code(size=32) }}<br>
-      {% for error in form.zip_code.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
+      <!-- Last Name -->
+      {% if form.lastname.errors|length %}
+        <div class="form-group col-12 col-sm-6 label-floating has-danger">
+          {{ form.lastname.label(class_="control-label bmd-label-floating") }}
+          {{ form.lastname(size=64, class_="form-control") }}
+          <span class="material-icons form-control-feedback">clear</span>
+          {% for error in form.lastname.errors %}
+          <span class="text-danger">[{{ error }}]</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="form-group col-12 col-sm-6">
+          {{ form.lastname.label(class_="bmd-label-floating") }}
+          {{ form.lastname(size=64, class_="form-control") }}
+        </div>
+      {% endif %}
+    </div>
 
-    <!-- Address -->
-    <p>
-      {{ form.address.label }}<br>
-      {{ form.address(size=32) }}<br>
-      {% for error in form.address.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
 
-    <!-- State -->
-    <p>
-      {{ form.state.label }}<br>
-      {{ form.state(size=32) }}<br>
-      {% for error in form.state.errors %}
-      <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}
-    </p>
+    <div class="form-row">
+      <!-- Address -->
+      {% if form.address.errors|length %}
+        <div class="form-group col-6 col-sm-4 label-floating has-danger">
+          {{ form.address.label(class_="control-label bmd-label-floating") }}
+          {{ form.address(size=64, class_="form-control") }}
+          <span class="material-icons form-control-feedback">clear</span>
+          {% for error in form.address.errors %}
+          <span class="text-danger">[{{ error }}]</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="form-group col-6 col-sm-4">
+          {{ form.address.label(class_="bmd-label-floating") }}
+          {{ form.address(size=64, class_="form-control") }}
+        </div>
+      {% endif %}
 
-    <p>{{ form.submit() }}</p>
+      <!-- Zip Code -->
+      {% if form.zip_code.errors|length %}
+        <div class="form-group col-6 col-sm-4 label-floating has-danger">
+          {{ form.zip_code.label(class_="control-label bmd-label-floating") }}
+          {{ form.zip_code(size=64, class_="form-control") }}
+          <span class="material-icons form-control-feedback">clear</span>
+          {% for error in form.zip_code.errors %}
+          <span class="text-danger">[{{ error }}]</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="form-group col-6 col-sm-4">
+          {{ form.zip_code.label(class_="bmd-label-floating") }}
+          {{ form.zip_code(size=64, class_="form-control") }}
+        </div>
+      {% endif %}
+
+      <!-- State -->
+      {% if form.state.errors|length %}
+        <div class="form-group col-6 col-sm-4 label-floating has-danger">
+          {{ form.state.label(class_="control-label bmd-label-floating") }}
+          {{ form.state(size=64, class_="form-control") }}
+          <span class="material-icons form-control-feedback">clear</span>
+          {% for error in form.state.errors %}
+          <span class="text-danger">[{{ error }}]</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="form-group col-6 col-sm-4">
+          {{ form.state.label(class_="bmd-label-floating") }}
+          {{ form.state(size=64, class_="form-control") }}
+        </div>
+      {% endif %}
+
+    </div>
+
+    <div class="form-row">
+      {% if form.phone_number.errors|length %}
+        <div class="form-group col-12 label-floating has-danger">
+          {{ form.phone_number.label(class_="control-label bmd-label-floating") }}
+          {{ form.phone_number(size=64, class_="form-control") }}
+          <span class="material-icons form-control-feedback">clear</span>
+          {% for error in form.phone_number.errors %}
+          <span class="text-danger">[{{ error }}]</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="form-group col-12">
+          {{ form.phone_number.label(class_="bmd-label-floating") }}
+          {{ form.phone_number(size=64, class_="form-control") }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.submit(class_="btn btn-danger") }}
+    </div>
   </form>
