@@ -1,7 +1,16 @@
 {% extends "layouts/public.html" %}
 
 {% block content %}
-  <h1>An unexpected error has occurred</h1>
-  <p>The administrator has been notified. Sorry for the inconvenience!</p>
-  <p><a href="{{ url_for('main.index') }}">Back</a></p>
+<div class="c-register__bg header-filter"></div>
+<div class="container c-register__container" style="padding-top:50px;">
+  <div class="row">
+    <div class="col-12 d-flex align-items-center justify-content-center" style="height: 100vh;">
+      <div class="text-center">
+        <h1 class="title text-white">Uh Oh :(</h1>
+        <h2 class="title text-white">An unexpexted error has occurred</h2>
+        <a class="subtitle text-white" href="{{ url_for('main.index') }}"><h3>Go Back Home</h3></a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
