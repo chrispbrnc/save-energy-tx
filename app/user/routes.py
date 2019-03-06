@@ -9,7 +9,7 @@ from flask_login import current_user, login_required
 import stripe
 from app.models.user import User
 from app.user import bp
-from app.user.forms import EditProfileForm
+from app.user.forms import EditProfileForm, ContactUsForm
 from app import db
 
 
@@ -35,7 +35,10 @@ def profile():
     form.phone_number.data = current_user.phone_number
 
     data = (stripe.Charge.list(customer=current_user.stripe_id)).data
-    charges = list(map(lambda c: { 'price': c['amount'], 'month': c['created'] }, data))
+    charges = list(map(lambda c: {
+        'price': '%.2f' % (c['amount'] / 100),
+        'month': datetime.utcfromtimestamp(c['created']).strftime('%B, %Y')
+    }, data))
 
     return render_template('user/profile.html',
             title='Dashboard',
@@ -47,9 +50,18 @@ def profile():
 @bp.route('/profile/contact')
 @login_required
 def contact_us():
+    form = ContactUsForm()
+
+    if form.validate_on_submit():
+        issue = form.issue.data
+        message = form.message.data
+        send_contactus_email(current_user, issue, message)
+        flash("Success! Message sent to administration", "success")
+        return redirect(url_for('user.profile'))
+
     return render_template('user/contact.html',
             title='Contact Us',
-            user=current_user)
+            user=current_user, form=form)
 
 
 # User profile edit

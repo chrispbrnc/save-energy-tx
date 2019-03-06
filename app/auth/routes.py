@@ -81,6 +81,13 @@ def register():
 
     return render_template('auth/register.html', title='Register', form=form)
 
+@bp.route('/resend-verify', methods=['GET'])
+def resend_verify():
+    if not current_user.verified:
+        send_verification_email(current_user)
+        flash("Check your email for the verification link", "info")
+    return redirect(url_for('user.profile'))
+
 # Verify Email
 @bp.route('/verify-email/<token>', methods=['GET', 'POST'])
 def verify_email(token):

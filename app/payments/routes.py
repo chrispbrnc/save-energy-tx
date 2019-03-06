@@ -7,6 +7,7 @@ from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user
 from app.payments import bp
+from app.payments.email import send_removal_request_email
 from app import db
 import stripe
 
@@ -36,3 +37,10 @@ def edit():
     except:
         flash('There was an issue editing the card', 'danger')
         return redirect(url_for('main.index'))
+
+@bp.route('/remove', methods=['POST'])
+def remove():
+    # Send email to admin to request a removal of payment
+    send_removal_request_email(current_user)
+    flash("The request to remove your subscription has been sent, a response will be sent to your email shortly.", "success")
+    return redirect(url_for('user.profile'))

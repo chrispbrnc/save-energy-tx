@@ -1,4 +1,49 @@
 {% extends "layouts/dashboard.html" %}
 
 {% block content %}
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8 mx-auto pt-5">
+        <div class="card mt-5">
+
+          <form class="form" action="" method="post" novalidate>
+            <div class="card-header card-header-danger text-center">
+              <h4 class="title m-0 p-0">Contact Us</h4>
+            </div>
+            {{ form.hidden_tag() }}
+
+            <div class="card-body mt-4">
+              <div class="form-row">
+                <div class="form-group col-12">
+                  {{ form.issue.label }}
+                  {{ form.issue(class_="form-control") }}
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12">
+                  {{ form.message.label }}
+                  {{ form.message(rows=15, class_="form-control c-contactus__message") }}
+                  {% for error in form.message.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12">
+                  {{ form.submit(class_="btn btn-danger btn-rounded") }}
+                </div>
+              </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

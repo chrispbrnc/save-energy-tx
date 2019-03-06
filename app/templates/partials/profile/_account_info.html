@@ -1,0 +1,21 @@
+<h3 class="subtitle">General Information:</h3>
+<ul class="list-unstyled">
+  <li>{{ current_user.email }} - {% if current_user.verified %} <span class="text-success">Verified</span> {% else %} <span class="text-danger">Not Verified</span> - <a href="{{ url_for('auth.resend_verify') }}">Resend verification email</a>{% endif %}</li>
+  <li>{{ current_user.phone_number }}</li>
+</ul>
+
+<h3 class="subtitle">Subscription information:</h3>
+<ul class="list-unstyled">
+  {% if current_user.active %}
+    <li>{{ current_user.subscription }}</li>
+  {% else %}
+    <li>No active subscription</li>
+  {% endif %}
+</ul>
+
+
+{% if current_user.active %}
+  <form action="{{ url_for('payments.remove') }}" method="post">
+    <input type="submit" class="btn btn-danger btn-rounded" value="Request Subscription Removal">
+  </form>
+{% endif %}
