@@ -32,3 +32,5 @@ class Config(object):
 
     STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
     STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+
+    FLASK_ADMIN_SWATCH = os.getenv('FLASK_ADMIN_SWATCH') or 'cerulean'
