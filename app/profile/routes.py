@@ -8,8 +8,8 @@ from flask import render_template, request, flash, redirect, url_for, current_ap
 from flask_login import current_user, login_required
 import stripe
 from app.models.user import User
-from app.user import bp
-from app.user.forms import EditProfileForm, ContactUsForm
+from app.profile import bp
+from app.profile.forms import EditProfileForm, ContactUsForm
 from app import db
 
 

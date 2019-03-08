@@ -13,6 +13,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_sendgrid import SendGrid
+from flask_admin.contrib.sqla import ModelView
 import stripe
 
 from app.config import Config
@@ -61,14 +62,19 @@ def create_app(config_class=Config):
     from app.payments import bp as payments_bp
     app.register_blueprint(payments_bp, url_prefix="/payments")
 
-    from app.user import bp as user_bp
-    app.register_blueprint(user_bp)
+    from app.profile import bp as profile_bp
+    app.register_blueprint(profile_bp)
 
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp)
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
+
+    from app.control import bp as admin_bp
+    from app.models.user import User
+    admin_bp.add_view(ModelView(User, db.session))
+    app.register_blueprint(admin_bp)
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:
