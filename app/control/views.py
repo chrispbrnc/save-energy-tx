@@ -8,6 +8,9 @@ class UserView(ModelView):
     def is_accessible(self):
         return current_user.is_admin
 
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect(url_for('auth.login'))
+
 
 class AdminView(admin.AdminIndexView):
     @admin.expose('/')
