@@ -1,0 +1,16 @@
+{% extends "layouts/public.html" %}
+
+{% block content %}
+<div class="c-register__bg header-filter"></div>
+<div class="container c-register__container" style="padding-top:50px;">
+  <div class="row">
+    <div class="col-12 d-flex align-items-center justify-content-center" style="height: 100vh;">
+      <div class="text-center">
+        <h1 class="title text-white">Uh Oh :(</h1>
+        <h1 class="title text-white">Looks like you aren't supposed to be here</h1>
+        <a class="subtitle text-white" href="{{ url_for('main.index') }}"><h3>Go Back Home</h3></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

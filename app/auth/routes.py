@@ -13,7 +13,7 @@ from app.auth.email import send_password_reset_email, send_verification_email
 def login():
     # If the user is logged in, skip the login page and go to the profile page
     if current_user.is_authenticated:
-        return redirect(url_for('user.profile'))
+        return redirect(url_for('profile.profile'))
     form = LoginForm()
 
     # If the form was submitted and is validated
@@ -26,7 +26,7 @@ def login():
             return redirect(url_for('auth.login'))
         # Otherwise log the user in
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('user.profile'))
+        return redirect(url_for('profile.profile'))
 
     # If the page is a GET request, send the loging template
     return render_template('auth/login.html', title='Log in', form=form)
@@ -86,14 +86,14 @@ def resend_verify():
     if not current_user.verified:
         send_verification_email(current_user)
         flash("Check your email for the verification link", "info")
-    return redirect(url_for('user.profile'))
+    return redirect(url_for('profile.profile'))
 
 # Verify Email
 @bp.route('/verify-email/<token>', methods=['GET', 'POST'])
 def verify_email(token):
     # If the user is logged in, skip the reset password page
     if current_user.is_authenticated and current_user.verified:
-        return redirect(url_for('user.profile'))
+        return redirect(url_for('profile.profile'))
     u = User.verify_email(token)
 
     # If don't find the user, redirect home
@@ -105,7 +105,7 @@ def verify_email(token):
     db.session.commit()
 
     flash('Success! Your account is now verified', 'success')
-    return redirect(url_for('user.profile'))
+    return redirect(url_for('profile.profile'))
 
 
 # Reset Password Request
@@ -113,7 +113,7 @@ def verify_email(token):
 def reset_password_request():
     # If the user is logged in, skip the reset password page
     if current_user.is_authenticated:
-        return redirect(url_for('user.profile'))
+        return redirect(url_for('profile.profile'))
     form = ResetPasswordRequestForm()
 
     # If the form was submitted and is validated

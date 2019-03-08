@@ -37,6 +37,8 @@ User model
     subscription
 
     stripe_id
+
+    is_admin
 '''
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -61,6 +63,8 @@ class User(UserMixin, db.Model):
     subscription = db.Column(db.String(256))
 
     stripe_id = db.Column(db.String(64))
+
+    is_admin = db.Column(db.Boolean)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

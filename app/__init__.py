@@ -13,9 +13,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_sendgrid import SendGrid
-from flask_admin.contrib.sqla import ModelView
 import stripe
 
+from app.control.views  import UserView
 from app.config import Config
 
 '''
@@ -73,7 +73,7 @@ def create_app(config_class=Config):
 
     from app.control import bp as admin_bp
     from app.models.user import User
-    admin_bp.add_view(ModelView(User, db.session))
+    admin_bp.add_view(UserView(User, db.session))
     app.register_blueprint(admin_bp)
 
     if not app.debug and not app.testing:

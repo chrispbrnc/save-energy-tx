@@ -1,5 +1,6 @@
 from flask import Blueprint
 from flask_admin import Admin
+from app.control.views import AdminView
 
 class AdminBlueprint(Blueprint):
     views=None
@@ -15,7 +16,7 @@ class AdminBlueprint(Blueprint):
 
     def register(self, app, options, first_registration=False):
         print(app)
-        admin = Admin(app, name='Energy Saver of Texas', template_mode='bootstrap3')
+        admin = Admin(app, name='Energy Saver of Texas', template_mode='bootstrap3', index_view=AdminView())
         for v in self.views:
             admin.add_view(v)
 
