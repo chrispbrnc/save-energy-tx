@@ -42,7 +42,7 @@ def logout():
 def register():
     # If the user is logged in, skip the register page and go to the profile page
     if current_user.is_authenticated:
-        return redirect
+        return redirect(url_for('profile.profile'))
     form = RegistrationForm()
 
     # If the form was submitted and is validated

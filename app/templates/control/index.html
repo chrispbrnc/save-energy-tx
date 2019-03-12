@@ -1,0 +1,225 @@
+{% extends 'admin/index.html' %}
+
+{% block body %}
+
+<div id="top" class="row">
+  <div class="col-xs-12">
+    <div class="jumbotron">
+      <h1>Admin Home and FAQ section</h1>
+      <p>Below you will find several sections of information dealing with this website and the tools used to run it.</p>
+    </div>
+    <br><br>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading" style="font-size: 22px;">Using the admin section</div>
+      <div class="panel-body">
+        Anything you need to know about this admin section. How to add/delete/edit users and information about this page.
+      </div>
+      <div class="list-group">
+        <a href="#this-page" class="list-group-item">How to use this page</a>
+        <a href="#manage-users" class="list-group-item">Managing users</a>
+        <a href="#flask-admin" class="list-group-item">How was this admin section created?</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading" style="font-size: 22px;">Working with Heroku</div>
+      <div class="panel-body">
+        This section covers everything Heroku, from Dyno information to sending emails and setting admin accounts.
+      </div>
+      <div class="list-group">
+        <a href="#heroku-glossary" class="list-group-item">Glossary</a>
+        <a href="#dyno-information" class="list-group-item">Dyno information</a>
+        <a href="#sendgrid" class="list-group-item">Sendgrid information</a>
+        <a href="#database" class="list-group-item">Database information</a>
+        <a href="#set-admin" class="list-group-item">Activate admin account</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading" style="font-size: 22px;">Navigating the website</div>
+      <div class="panel-body">
+        Information about the various pages on the site. This is a general overview of the application
+      </div>
+      <div class="list-group">
+        <a href="#site-overview" class="list-group-item">Overview</a>
+        <a href="#public-pages" class="list-group-item">Public pages</a>
+        <a href="#account-pages" class="list-group-item">Account pages</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading" style="font-size: 22px;">Other information</div>
+      <div class="panel-body">
+        Information about the environment variables, other documentation and other services like stripe.
+      </div>
+      <div class="list-group">
+        <a href="#env-var" class="list-group-item">Environment variables</a>
+        <a href="#other-doc" class="list-group-item">Other documentation</a>
+        <a href="#stripe-info" class="list-group-item">Using stripe</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Admin section -->
+<div id="admin_section" class="row">
+  <div class="col-xs-12">
+    <h2 class="page-header">Using the admin section</h2>
+
+    <!-- this-page -->
+    <h3 id="this-page" class="page-header">How to use this page</h3>
+    <p>
+      This page is to document anything dealing with running the website and keeping it going. This is not code documentation as that is in the README.md in the root of the code. This is to help with any questions that may arise when you need to service, maintenance, or interact with the application. This deals with Heroku for hosting and running the application, Stripe for the payment platform and the application itself for managing the users and showing them their profile.
+    </p>
+    <p>
+      In the admin header there are 2 links:
+      <ul>
+        <li>Home - / and /index</li>
+        <li>Users - /user</li>
+      </ul>
+    </p>
+    <p>
+      Home is this page and details the information in the overview above.
+    </p>
+    <p>
+      Users is the users page for adding, editing or deleting users
+    </p>
+
+    <!-- manage-users -->
+    <h3 id="manage-users" class="page-header">Managing users</h3>
+    <p>
+      In the user page you will see a table with the users paginated. Each column represents the information in the database for the user. You can edit a user by clicking on the blue pen on the second column from the left of that user's row. You can preform batch actions by clicking the checkbox in the first column on the left for that user's row.
+    </p>
+    <p>
+      In the edit page you can edit anything about a user and even allow a user to become an admin by checking the 'Is Admin' checkbox. This is also where you write in the name of the subscription plan you have the user on. This could be the name of the company, or the name of a generic plan ('Gold plan', etc.). Do not edit the user's password hash. If you edit the user's email, update their username to that email as well.
+    </p>
+    <p>
+      You can also create a user here, but it is not recommended as it does not automatically hash the password entered and needs a pre-hashed password. Instead look at the Heroku section for details on adding a new user.
+    </p>
+    <p>
+      You can delete a user's account on the all users page (called list) next to the edit blue pen.
+    </p>
+
+    <!-- flask-admin -->
+    <h3 id="flask-admin" class="page-header">How was this admin section created?</h3>
+    <p>
+      This admin section was created using <a href="https://flask-admin.readthedocs.io/en/latest/">flask-admin</a>
+    </p>
+  </div>
+</div>
+<br><br>
+
+<!-- heroku section -->
+<div id="heroku_section" class="row">
+  <div class="col-xs-12">
+    <h2 class="page-header">Working with Heroku</h2>
+
+    <!-- heroku-glossary -->
+    <h3 id="heroku-glossary" class="page-header">Glossary</h3>
+
+    <!-- manage-users -->
+    <h3 id="dyno-information" class="page-header">Dyno information</h3>
+
+    <!-- flask-admin -->
+    <h3 id="sendgrid" class="page-header">Sendgrid information</h3>
+
+    <!-- database -->
+    <h3 id="database" class="page-header">Database information</h3>
+
+    <!-- set-admin -->
+    <h3 id="set-admin" class="page-header">Activate admin account</h3>
+  </div>
+</div>
+<br><br>
+
+<!-- website section -->
+<div id="website_section" class="row">
+  <div class="col-xs-12">
+    <h2 class="page-header">Navigating the website</h2>
+
+    <!-- site-overview -->
+    <h3 id="site-overview" class="page-header">Overview</h3>
+    <p>
+      The site consists of 3 main pieces: Public, Account and Admin pages. The public pages are those that anyone can visit. Other pieces include the static files in the app/static folder. To any image, movie, pdf, etc. to the site you must add it here and commit it to the git repository that you push to Heroku. You can look at the routes for the core of the public pages in the app/main folder. You can see the index, FAQ and the contact us. The rest of the public routes are located in the app/auth folder. Here you will find the login/logout/register, forgot password and verify email routes. The private routes include the user profile, edit account and another user-oriented contact us page for issues. The Admin routes include this admin page, the all users page, new user page and edit user page.
+    </p>
+
+    <!-- public-pages -->
+    <h3 id="public-pages" class="page-header">Public pages</h3>
+    <p>
+      The public pages are as follows:
+      <ul>
+        <li>Home - GET and POST / or /index</li>
+        <li>FAQ - GET /faq</li>
+        <li>Contact Us - POST to /contact</li>
+        <li>Register - GET and POST /register</li>
+        <li>Login - GET and POST /login</li>
+        <li>Logout - GET /logout</li>
+        <li>Reset Password - GET and POST /reset-password</li>
+        <li>Reset Password (Token) - GET and POST /reset-password/<token></li>
+        <li>Verify Password (Token) - GET and POST</li>
+        <li>Resend Verify - GET</li>
+      </ul>
+    </p>
+    <p>
+      The more information section collects an email given from a visitor and sends them an email with some aditional information and sends the admin and email alerting to a prospective user to email back. Home attempts to funnel users into the register page to be contacted later. The FAQ is pretty standard.
+    </p>
+    <p>
+    Authentication/Authorization is done using standard <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication">HTTP authentication</a>. The site uses a flask package called <a href="https://flask-login.readthedocs.io/en/latest/">flask-login</a> to manage the details of the auth setup. The routes include the standard login/logout/register, lost password and verify email. There is also a route that will resend the verification email if the account is not verified.
+    </p>
+
+    <!-- account-pages -->
+    <h3 id="account-pages" class="page-header">Account pages</h3>
+    <p>
+      The account pages are as follows:
+      <ul>
+        <li>Profile - GET and POST /profile</li>
+        <li>Edit Profile - GET and POST /profile/edit</li>
+        <li>Contact Us - GET and POST /profile/contact</li>
+      </ul>
+    </p>
+    <p>
+      The main account page shows the email verification status, the user's name, email and <a href="https://en.gravatar.com/">Gravatar</a>. Other sections show the billing history and energy plan. There is also a button for the user to change their payment information.
+    </p>
+    <p>
+      The charges shown are those for the user's stripe id. The amount and date is shown. On the Account information side the email verification status is shown along with the phone number and subscription information.
+    </p>
+    <p>
+      The edit profile page is a replica of the edit profile section on the main profile page but takes up the full screen. This page can be further expanded to include information not on the main profile page form.
+    </p>
+    <p>
+      The contact page allows the user to contact the company with any issues that might not be covered in the FAQ.
+    </p>
+
+  </div>
+</div>
+<br><br>
+
+<!-- other section -->
+<div id="other_section" class="row">
+  <div class="col-xs-12">
+    <h2 class="page-header">Other information</h2>
+
+    <!-- env-var -->
+    <h3 id="env-var" class="page-header">Environment variables</h3>
+
+    <!-- other-doc -->
+    <h3 id="other-doc" class="page-header">Other documentation</h3>
+
+    <!-- Using Stripe -->
+    <h3 id="stripe-info" class="page-header">Using Stripe</h3>
+
+  </div>
+</div>
+
+{% endblock %}

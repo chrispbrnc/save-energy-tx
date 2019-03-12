@@ -6,7 +6,7 @@
 
 <h3 class="subtitle">Subscription information:</h3>
 <ul class="list-unstyled">
-  {% if current_user.active %}
+  {% if current_user.is_active %}
     <li>{{ current_user.subscription }}</li>
   {% else %}
     <li>No active subscription</li>
