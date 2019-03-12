@@ -33,7 +33,6 @@
         This section covers everything Heroku, from Dyno information to sending emails and setting admin accounts.
       </div>
       <div class="list-group">
-        <a href="#heroku-glossary" class="list-group-item">Glossary</a>
         <a href="#dyno-information" class="list-group-item">Dyno information</a>
         <a href="#sendgrid" class="list-group-item">Sendgrid information</a>
         <a href="#database" class="list-group-item">Database information</a>
@@ -124,12 +123,20 @@
 <div id="heroku_section" class="row">
   <div class="col-xs-12">
     <h2 class="page-header">Working with Heroku</h2>
-
-    <!-- heroku-glossary -->
-    <h3 id="heroku-glossary" class="page-header">Glossary</h3>
+    <p>
+      Below is an example image of a heroku dashboard for an application:
+    </p>
+    <img class="col-xs-12" src="{{ url_for('static', filename='images/heroku_1.png') }}" alt="">
 
     <!-- manage-users -->
     <h3 id="dyno-information" class="page-header">Dyno information</h3>
+    <p>
+      The dyno chosen is the lowest paid plan. This is more than sufficient for the application until well over 1000 users.
+      You can see more information on your Dyno in the Resources tab. You will also find your information for Sendgrid and for the database. The hobby plan is $7/mo and your database and sendgrid plans are free.
+    </p>
+    <p>
+      The deployment process takes your code straight from your github account straight to Heroku. Everytime a change is pushed to the master branch on Github, Heroku sees it and immediately deploys the changes. This will help later on if you need to make quick changes without messing with anything but the code.
+    </p>
 
     <!-- flask-admin -->
     <h3 id="sendgrid" class="page-header">Sendgrid information</h3>
