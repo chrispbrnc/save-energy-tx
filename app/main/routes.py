@@ -51,7 +51,3 @@ def faq():
         },
     ]
     return render_template('general/faq.html', title='FAQ', items=items)
-
-@bp.route('/contact', methods=['GET', 'POST'])
-def contact():
-    return render_template('general/contact.html', title='Contact Us')

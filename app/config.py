@@ -24,7 +24,11 @@ class Config(object):
     MAIL_USERNAME = os.getenv('MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
 
-    ADMINS = ['pgb@pburris.me']
+    ADMINS = [
+        os.getenv('NOREPLY_EMAIL'),
+        os.getenv('ADMIN_EMAIL'),
+    ]
+
     LOG_TO_STDOUT = os.getenv('LOG_TO_STDOUT')
 
     SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
