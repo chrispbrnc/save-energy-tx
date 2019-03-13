@@ -11,6 +11,6 @@ def send_moreinfo_email(email):
 
     send_email('[Energy Savers] Information Request',
         sender=current_app.config['ADMINS'][0],
-        recipients=app.config['ADMINS'][1],
+        recipients=current_app.config['ADMINS'][1],
         text_body=render_template('email/more_info/more_info_admin.txt'),
         html_body=render_template('email/more_info/more_info_admin.html'))
