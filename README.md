@@ -35,6 +35,7 @@ The frontend is built using [Parcel](https://parceljs.org/).
   * **email.py** - Email functionality
   * **cli.py** - CLI configuration
   * **auth** - Auth blueprint
+  * **control** - Admin blueprint
   * **main** - Main blueprint
   * **payments** - Payments (Stripe) blueprint
   * **errors** - Errors blueprint
@@ -42,11 +43,12 @@ The frontend is built using [Parcel](https://parceljs.org/).
   * **templates** - Jinja2 templates
     - **partials** - partials/components
     - **auth** - Auth templates
+    - **control** - Admin templates
     - **email** - Email templates
     - **error** - Error templates
     - **user** - User templates
     - **layouts** - Base layouts that other templates build on
-    - **main** - Main templates (FAQ, homepage)
+    - **general** - Main templates (FAQ, homepage)
   * **static** - Static files
   * **tests** - All tests
 
@@ -73,6 +75,24 @@ Make sure you have Python 3.5+ and Node 8.0+
 ### Deploying
 
 Make sure you are logged into Heroku and have the remote repository set. Once you do you can run `git push heroku master`
+
+The master branch on Github is also rigged to trigger a build on Heroku.
+
+### Environment Variables
+
+```
+FLASK_APP = This is the entry to the flask app, currently energy_saver.py
+
+SECRET_KEY = This is a random string used for backend security
+
+NOREPLY_EMAIL - This email sends out the verify-email/reset-password/etc. emails
+ADMIN_EMAIL - This email gets the contact-me emails and the more-information alerts
+
+SENDGRID_API_KEY - found in Sendgrid control panel inside the Heroku control panel
+
+STRIPE_SECRET_KEY - found in the Stripe control panel
+STRIPE_PUBLISHABLE_KEY - found in the Stripe control panel
+```
 
 
 Copyright 2019, Patrick Burris, Chris Branca, All rights reserved.
