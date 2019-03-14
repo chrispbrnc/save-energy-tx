@@ -57,7 +57,7 @@ def contact_us():
         message = form.message.data
         send_contactus_email(current_user, issue, message)
         flash("Success! Message sent to administration", "success")
-        return redirect(url_for('user.profile'))
+        return redirect(url_for('profile.profile'))
 
     return render_template('user/contact.html',
             title='Contact Us',
@@ -79,7 +79,7 @@ def edit():
         current_user.phone_number = form.phone_number.data
         db.session.commit()
         flash('Success! Your changes have been saved', 'success')
-        return redirect(url_for('user.profile'))
+        return redirect(url_for('profile.profile'))
 
     elif request.method == 'GET':
         # Set the values on form from current_user
