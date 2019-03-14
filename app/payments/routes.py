@@ -21,7 +21,7 @@ def add():
         current_user.active_sub = True
         db.session.commit()
         flash('Successfully added card to account', 'success')
-        return redirect(url_for('user.profile'))
+        return redirect(url_for('profile.profile'))
     except stripe.error.CardError:
         flash('There was an issue adding the card', 'danger')
         return redirect(url_for('main.index'))
@@ -33,7 +33,7 @@ def edit():
     try:
         stripe.Customer.modify(current_user.stripe_id, source=token)
         flash('Successfully edited card', 'success')
-        return redirect(url_for('user.profile'))
+        return redirect(url_for('profile.profile'))
     except:
         flash('There was an issue editing the card', 'danger')
         return redirect(url_for('main.index'))
@@ -43,4 +43,4 @@ def remove():
     # Send email to admin to request a removal of payment
     send_removal_request_email(current_user)
     flash("The request to remove your subscription has been sent, a response will be sent to your email shortly.", "success")
-    return redirect(url_for('user.profile'))
+    return redirect(url_for('profile.profile'))
