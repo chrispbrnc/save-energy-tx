@@ -155,6 +155,15 @@
 
     <!-- set-admin -->
     <h3 id="set-admin" class="page-header">Activate admin account</h3>
+    <p>
+      To set a user as admin through Heroku you have to log in to Heroku and go to the application. Make sure you have already signed up on the site with the email you want to make admin. In the top right there is a button labeled 'more' with a down arrow. Click on this button and choose 'Run console'. When the input comes up type in 'flask shell' without the quotations and hit enter. When it loads up you will have to enter the following commands:
+      <ul>
+        <li><code>u = User.query.filter_by(email="<your email here>").first()</code></li>
+        <li><code>u.is_admin = True</code></li>
+        <li><code>db.session.commit()</code></li>
+      </ul>
+      If there are no errors then you have successfully set that account to admin.
+    </p>
   </div>
 </div>
 <br><br>
@@ -227,14 +236,72 @@
 
     <!-- env-var -->
     <h3 id="env-var" class="page-header">Environment variables</h3>
+    <p>
+      The environment variables allow for sensitive information to be set outside of the server in a secure way. This allows you to change key parts of the application on the fly by changing a handful of variables.
+    </p>
+    <div class="col-xs-12">
+      <div class="col-xs-6">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>FLASK_APP</code></td>
+              <td>This is the entry to the flask app, currently energy_saver.py</td>
+            </tr>
+            <tr>
+              <td><code>SECRET_KEY</code></td>
+              <td>This is a random string used for backend security</td>
+            </tr>
+            <tr>
+              <td><code>NOREPLY_EMAIL</code></td>
+              <td>This email sends out the verify-email/reset-password/etc. emails</td>
+            </tr>
+            <tr>
+              <td><code>ADMIN_EMAIL</code></td>
+              <td>This email gets the contact-me emails and the more-information alerts</td>
+            </tr>
+            <tr>
+              <td><code>SENDGRID_API_KEY</code></td>
+              <td>found in Sendgrid control panel inside the Heroku control panel</td>
+            </tr>
+            <tr>
+              <td><code>STRIPE_SECRET_KEY</code></td>
+              <td>found in the Stripe control panel</td>
+            </tr>
+            <tr>
+              <td><code>STRIPE_PUBLISHABLE_KEY</code></td>
+              <td>found in the Stripe control panel</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     <!-- other-doc -->
     <h3 id="other-doc" class="page-header">Other documentation</h3>
+    <p>
+      You can find the rest of the doc in the README.md file in this repo also on <a href="https://github.com/Jumballaya/eswebsite">Github</a>
+    </p>
 
     <!-- Using Stripe -->
     <h3 id="stripe-info" class="page-header">Using Stripe</h3>
+    <p>
+      Stripe is controlled with the 2 API keys. You can <a href="https://stripe.com/docs/keys">learn more about Stripe API keys here</a>.
+    </p>
+    <p>
+      You can find the <a href="https://stripe.com/docs/api?lang=python">Python stripe API documentation here</a>.
+    </p>
 
   </div>
 </div>
+<br><br><br>
+<a href="#top">Back to Top</a>
+<br><br><br>
+
 
 {% endblock %}
