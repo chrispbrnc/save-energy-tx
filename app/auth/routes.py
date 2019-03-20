@@ -106,7 +106,9 @@ def verify_email(token):
     db.session.commit()
 
     flash('Success! Your account is now verified', 'success')
-    return redirect(url_for('profile.profile'))
+    if current_user.is_authenticated:
+        return redirect(url_for('profile.profile'))
+    return redirect(url_for('main.index'))
 
 
 # Reset Password Request
@@ -148,4 +150,4 @@ def reset_password(token):
         flash('Success! Your password has been reset.', 'success')
         return redirect(url_for('auth.login'))
 
-    return redirect(url_for('main.index'))
+    return render_template('auth/reset-password.html', title='Reset Password', form=form)
