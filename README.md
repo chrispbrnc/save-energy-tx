@@ -95,4 +95,4 @@ STRIPE_PUBLISHABLE_KEY - found in the Stripe control panel
 ```
 
 
-Copyright 2019, Patrick Burris, Chris Branca, All rights reserved.
+Copyright 2019, Save Energy Tx, Chris Branca, All rights reserved.
