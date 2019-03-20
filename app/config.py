@@ -32,7 +32,7 @@ class Config(object):
     LOG_TO_STDOUT = os.getenv('LOG_TO_STDOUT')
 
     SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
-    SENDGRID_DEFAULT_FROM = 'pgb@pburris.me'
+    SENDGRID_DEFAULT_FROM = os.getenv('NOREPLY_EMAIL')
 
     STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
     STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
