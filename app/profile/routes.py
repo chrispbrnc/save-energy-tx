@@ -10,6 +10,7 @@ import stripe
 from app.models.user import User
 from app.profile import bp
 from app.profile.forms import EditProfileForm, ContactUsForm
+from app.profile.email import send_contactus_email
 from app import db
 
 
@@ -47,7 +48,7 @@ def profile():
             form=form, charges=charges)
 
 # Contact Us for users
-@bp.route('/profile/contact')
+@bp.route('/profile/contact', methods=['GET', 'POST'])
 @login_required
 def contact_us():
     form = ContactUsForm()
